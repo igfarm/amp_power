@@ -4,9 +4,10 @@ After=syslog.target
 [Service]
 User=ubuntu
 Type=idle
+Environment=PATH=/home/ubuntu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ExecStart=php /home/ubuntu/camilladsp/amp_power/amp_power.php
-StandardOutput=syslog
-StandardError=syslog
+#StandardOutput=syslog
+#StandardError=syslog
 SyslogIdentifier=amp_power
 
 [Install]
