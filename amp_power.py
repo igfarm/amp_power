@@ -23,7 +23,6 @@ class State(Enum):
 #	  Status: Running
 #	    ...
 #
-
 def getSoundState() :
     state = State.ON;
     
@@ -56,7 +55,7 @@ def getSoundState() :
 def getAmpState() :
     state = State.UNKNOWN
     
-    cmd = KASA_AMP_CMD
+    cmd = KASA_AMP_CMD.copy()
     cmd.append('state')
     data = subprocess.check_output(cmd)
 
@@ -84,8 +83,9 @@ def setAmpState(state) :
 		return
 	log.info("Setting Amp to " + str(state))
 
-	cmd = KASA_AMP_CMD
-	cmd.append(str(state))
+	cmd = KASA_AMP_CMD.copy()
+	cmd.append(str(state.value))
+	
 	subprocess.check_output(cmd)
 
 #
