@@ -29,6 +29,9 @@ while(true) {
 	
 	if ($sound_new_state != State::UNKNOWN  &&
 	   $sound_prev_state != $sound_new_state) {
+
+		print("Sound state changed from " . $sound_prev_state->label() .
+			 " to " . $sound_new_state->label() ."\n");
 	
 		$amp_state = getAmpState();
 		
@@ -62,8 +65,6 @@ function getSoundState() {
 			default => State::UNKNOWN
 		};
 	}
-		
-	print("Sound state is  " . $state->label() ."\n");
 	return $state;
 }
 
