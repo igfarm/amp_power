@@ -35,7 +35,6 @@ while(true) {
 		if ($amp_state != State::UNKNOWN  && 
 			$amp_state != $sound_new_state) {
 			setAmpState($sound_new_state);
-			sleep(1);
 		}
 	}
 	$sound_prev_state = $sound_new_state;
