@@ -1,0 +1,13 @@
+[Unit]
+After=syslog.target
+
+[Service]
+User=ubuntu
+Type=idle
+ExecStart=php /home/ubuntu/camilladsp/amp_power/amp_power.php
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=amp_power
+
+[Install]
+WantedBy=multi-user.target
