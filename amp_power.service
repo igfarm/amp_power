@@ -1,3 +1,8 @@
+# sudo cp amp_power.service /lib/systemd/system/
+# sudo systemctl enable amp_power.service
+# sudo systemctl daemon-reload
+# sudo systemctl start amp_power.service
+# 
 [Unit]
 After=syslog.target
 
@@ -5,7 +10,7 @@ After=syslog.target
 User=ubuntu
 Type=idle
 Environment=PATH=/home/ubuntu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ExecStart=php /home/ubuntu/camilladsp/amp_power/amp_power.php
+ExecStart=python3 /home/ubuntu/camilladsp/amp_power/amp_power.py
 #StandardOutput=syslog
 #StandardError=syslog
 SyslogIdentifier=amp_power
