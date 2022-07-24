@@ -22,5 +22,20 @@ The clone the library, modify as required and
 
 ```
 cd camiladsp
-git clone 
+git clone git@github.com:igfarm/amp_power.git
+cd amp_power
+```
+
+Test the script
+```
+python3 amp_power.py
+```
+
+After to are satisfied it works, you can install it as a srvice. To do this update amp_power.service to point to the correct path and then:
+
+```
+sudo cp amp_power.service /lib/systemd/system/
+sudo systemctl enable amp_power.service
+sudo systemctl daemon-reload
+sudo systemctl start amp_power.service
 ```
