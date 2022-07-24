@@ -1,11 +1,11 @@
 
 # Power Amp Control for CamillaDSP and RasperyPi using Kasa SmartPulg
 
-This project contains a small script to control the AC power of an audio power amplifier using an Kasa smart plug when connected to CamillaDSP on a RasperyPi. This setup is  descirbed in [this thread](https://www.audiosciencereview.com/forum/index.php?threads/rpi4-camilladsp-tutorial.29656/) of the Audio Science Review website.
+This project contains a small script to control the AC power of an audio power amplifier using an Kasa smart plug when connected to CamillaDSP on a RasperyPi. The "RPi4 + CamillaDSP Tutorial" setup is descirbed in [this thread](https://www.audiosciencereview.com/forum/index.php?threads/rpi4-camilladsp-tutorial.29656/) of the Audio Science Review website.
 
-It can use any of the plugs from that the [python-kasa](https://github.com/python-kasa/python-kasa) can control. In my case I used the [HS103 device](https://www.amazon.com/TP-Link-Kasa-Smart-Wifi-Plug/dp/B07RCNB2L3).
+The script can use any of the plugs from that the [python-kasa](https://github.com/python-kasa/python-kasa) can control. In my case I used the [HS103 device](https://www.amazon.com/TP-Link-Kasa-Smart-Wifi-Plug/dp/B07RCNB2L3).
 
-The script looks at the file the status of the playback device:
+The script looks for the status of the playback device on the linux process information pseudo-file system:
 ```
 $ head /proc/asound/card2/stream0
 MOTU M4 at usb-0000:01:00.0-1.3, high speed : USB Audio
@@ -15,11 +15,11 @@ Playback:
   Interface 1
   ...
 ```
-And checks the stream for a `Stop` or `Running` status and uses that to turn the smart plug on or off.
+and checks the stream for a `Stop` or `Running` status and uses that to turn the smart plug on or off.
 
-To use, first make sure you install the  `python-kasa` library as per the instruction and can control the device from the command line.
+To use, first make sure you install the `python-kasa` library as per the instruction and can control the device from the command line. A good article on who to do this is [here](https://medium.com/geekculture/use-raspberry-pi-and-tp-link-kasa-to-automate-your-devices-9f936a6243c1).
 
-The clone the library, modify as required and 
+Then clone the library, modify as required and:
 
 ```
 cd camiladsp
@@ -32,7 +32,7 @@ Test the script
 python3 amp_power.py
 ```
 
-After to are satisfied it works, you can install it as a srvice. To do this update `amp_power.service` to point to the correct path and then:
+After you are satisfied it works, you can install it as a srvice. To do this update `amp_power.service` to point to the correct path and then:
 
 ```
 sudo cp amp_power.service /lib/systemd/system/
