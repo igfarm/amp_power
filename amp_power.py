@@ -25,7 +25,7 @@ class State(Enum):
 #        ...
 #
 def getSoundState() :
-    state = State.ON;
+    state = State.UNKNOWN;
     
     file = open(STEAM_PROC)
     data = file.read()
