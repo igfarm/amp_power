@@ -32,7 +32,7 @@ Test the script
 python3 amp_power.py
 ```
 
-After you are satisfied it works, you can install it as a srvice. To do this update `amp_power.service` to point to the correct path and then:
+After you are satisfied it works, install it as a service. To do this update `amp_power.service` to point to the correct path and then:
 
 ```
 sudo cp amp_power.service /lib/systemd/system/
