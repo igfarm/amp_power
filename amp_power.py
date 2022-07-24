@@ -25,7 +25,7 @@ class State(Enum):
 #        ...
 #
 def getSoundState() :
-    state = State.UNKNOWN;
+    state = State.UNKNOWN
     
     file = open(STEAM_PROC)
     data = file.read()
@@ -40,7 +40,7 @@ def getSoundState() :
                 state = State.OFF
         
     #log.info("Sound is " + str(state))
-    return state;
+    return state
 
 #
 # Get the state of the plug
@@ -69,7 +69,7 @@ def getAmpState() :
                 state = State.OFF
     
     log.info("Amp is " + str(state))
-    return state;
+    return state
 
 #
 # Set the state of the plug
@@ -97,14 +97,14 @@ if __name__ == '__main__':
     log = logging.getLogger("amp_power")
     log.info("Starting")
 
-    sound_prev_state = State.UNKNOWN;
+    sound_prev_state = State.UNKNOWN
     while (True) :
-        sound_new_state = getSoundState();
+        sound_new_state = getSoundState()
         if sound_new_state == State.UNKNOWN:
             log.error("Unable to get sound state")
             sys.exit()
         elif sound_prev_state != sound_new_state:
-            log.info("Sound changed from " + str(sound_prev_state) + " to " + str(sound_new_state));
+            log.info("Sound changed from " + str(sound_prev_state) + " to " + str(sound_new_state))
             amp_state = getAmpState()
             if amp_state == State.UNKNOWN:
                 log.error("Unable to get amp state")
